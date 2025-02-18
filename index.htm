@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>夾娃娃</title>
+
+<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.ui.touch-punch.js"></script>
+
+<style>
+/*簡易歸零*/
+*{margin:0px auto; padding:0px; box-sizing:border-box;}
+
+.wrapper{ width:320px; height:568px; background:url(images/news_bg.jpg) no-repeat; overflow: hidden;}
+
+.ad_xx{ width:100%; height:100%; position:relative;}
+
+/*金幣*/
+.ad_xx .coin{ width:50px; height:50px; background:url(images/coin.png) no-repeat; background-size:50px 50px; position:absolute; bottom:160px; left: 5px; cursor:pointer; z-index: 50; animation:move_coin 1s ease-in-out 3;}
+
+
+/*coin*/
+@keyframes move_coin{
+	0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+
+.arrow{ width:180px; height:40px; background:url(images/arrow.png) no-repeat; background-size:100% auto; position:absolute; bottom:220px; left:65px;}
+
+/*小機臺*/
+.ad_xx .machine{ width:70px; height:70px; background:url(images/doll_mac.png) no-repeat; background-size:70px 70px; position:absolute; bottom:150px; right:5px; cursor:pointer;}
+
+/*動畫初始隱藏*/
+.ad_xx .all{ display:none;}
+
+/*夾娃娃 線*/
+.ad_xx .all .line{ width:100px; height:100%; background:url(images/line.png); background-size:100px 100px; position:absolute; top:-100px; left:50%; margin-left:-50px; 
+animation:move_1 5s ease-in-out forwards;}
+
+/*夾娃娃 爪子*/
+.ad_xx .all .claw{ width:100px; height:100px; background-size:100px 100px; position:absolute; top:-100px; left:50%; margin-left:-50px; animation:move_2 5s ease-in-out forwards;}
+
+/*夾娃娃 爪子-中心*/
+.ad_xx .all .claw .center{ width:100%; height:100%; background:url(images/claw_c.png) no-repeat; background-size:100px 100px;}
+/*夾娃娃 爪子-左*/
+.ad_xx .all .claw .left{ width:35px; height:60px; background:url(images/claw_l.png) no-repeat; background-size:35px 60px; position:absolute; top:30%; left:5px; 
+animation:move_3 5s ease-in-out forwards;}
+/*夾娃娃 爪子-右*/
+.ad_xx .all .claw .right{ width:35px; height:60px; background:url(images/claw_r.png) no-repeat; background-size:35px 60px; position:absolute; top:30%; right:5px; 
+animation:move_4 5s ease-in-out forwards;}
+
+/*夾起 廣告*/
+.ad_xx .all .claw a.ad_box{ display:block; width:320px; height:100px; background-size:320px 100px; position:absolute; top:70%; left:50%; margin-left:-160px;
+animation:move_5 5s ease-in-out forwards;}
+.ad_xx .all .claw a.ad_box img{ width:100%; height:auto;}
+
+/*關閉鈕*/
+.ad_xx .btn_close{ width:20px; height:20px; text-align:center; font-size:12px; background-color:#000; color:#fff; border:2px solid #fff; opacity:0.3; border-radius:30px; position:absolute; top:33%; right:2%; cursor:pointer; display:none;}
+
+/*金幣丟進去透明*/
+.myactive { opacity:0.5;}
+
+
+
+/*line*/
+@keyframes move_1{
+	0%{ top:-120%;}
+	10%{ top:-100%;}
+	30%{ top:-80%;}
+	70%{ top:0%;}
+	100%{ top:-80%;}
+}
+
+/*claw*/
+@keyframes move_2{
+	0%{ top:-100%;}
+	10%{ top:0%;}
+	30%{ top:20%;}
+	70%{ top:100%;}
+	100%{ top:20%;}
+}
+
+/*claw left*/
+@keyframes move_3{
+	0%{ transform:rotate(0deg); transform-origin:top right;}
+	10%{ transform:rotate(-5deg);}
+	30%{ transform:rotate(-20deg);}
+	50%{ transform:rotate(0deg);}
+}
+
+/*claw right*/
+@keyframes move_4{
+	0%{ transform:rotate(0deg); transform-origin:top left;}
+	10%{ transform:rotate(5deg);}
+	30%{ transform:rotate(20deg);}
+	50%{ transform:rotate(0deg);}
+}
+
+/*ad_box*/
+@keyframes move_5{
+	0%{ opacity:0;}
+	50%{ opacity:0;}
+	90%{ opacity:1;}
+}
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+	<!--wrapper 開始-->
+	<div class="wrapper">
+		<!--ad_xx 開始-->
+		<div class="ad_xx">
+			<!--金幣 開始-->
+			<div class="coin"></div>
+			<!--金幣 結束-->
+
+			<div class="arrow"></div>
+			
+			<!--機器 開始-->
+			<div class="machine"></div>
+			<!--機器 結束-->
+
+			<!--夾子動畫 開始-->
+			<div class="all">
+				<!--線 開始-->
+				<div class="line"></div>
+				<!--線 結束-->
+				<!--爪子 開始-->
+				<div class="claw">
+					<div class="center"></div>
+					<!--ad_box 開始-->
+					<a class="ad_box" href="https://gym.e-land.gov.tw/Default.aspx"><img src="images/ad_box.jpg" /></a>
+					<!--ad_box 結束-->
+
+					<!--左夾 開始-->
+					<div class="left"></div>
+					<!--左夾 結束-->
+					<!--右夾 開始-->
+					<div class="right"></div>	
+					<!--右夾 結束-->
+
+				</div>
+				<!--爪子 結束-->
+
+				
+			</div>
+			<!--夾子動畫 結束-->
+
+			<button class="btn_close">X</button>
+
+		</div>
+		<!--ad_xx 結束-->
+	</div>
+	<!--wrapper 結束-->
+
+	<script>
+	
+	$(function(){
+
+		$(".coin").draggable();
+		$(".machine").droppable({
+			accept:".coin",
+			activeClass:'myactive',
+			drop: function( event, ui ) {
+				$(".coin").fadeOut(function(){
+					$(".machine, .arrow").fadeOut(500);
+				});
+				$(".all").css({"display":"block"});
+
+				setTimeout(function() {
+					$(".btn_close").fadeIn();
+				}, 4500);
+			}
+		});
+
+		$(".btn_close").on("click", function(){
+			$(".ad_xx").remove();
+		});
+	});
+	
+	</script>
+	
+</body>
+</html>
